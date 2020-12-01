@@ -2,6 +2,33 @@ import React from 'react';
 import propTypes from "prop-types";
 //import Ujone from './Ujone';
 
+class App extends React.Component {
+  state = {
+    count: 0
+  };
+
+  plus=()=>{
+    //setSate re-call render()
+    this.setState(current => ({count: current.count+1}));
+  };
+  minus=()=>{
+    this.setState(current => ({count: current.count-1}));    
+  };
+
+  render() {
+    return (
+    <div>
+      <h1>The number is {this.state.count}</h1>
+      <button onClick={this.plus}>Plus</button>
+      <button onClick={this.minus}>Minus</button>
+    </div>
+    )
+  }
+}
+
+export default App;
+
+/*
 function Food({name, price, rating}) {
   //console.log(props);
   //alert(props.age);
@@ -43,14 +70,15 @@ function Dishes(dish) {
 
 function App() {
 return <div>{foodILike.map(Dishes)}</div>
-  /*
-  return (
-    <div>
-      <h1>Helloo!!!</h1>
-      {foodILike.map(dish=><Food name={dish.name} price={dish.price}/>)}
-    </div>
-  );
-  */
+  
+  //return (
+  //  <div>
+  //    <h1>Helloo!!!</h1>
+  //    {foodILike.map(dish=><Food name={dish.name} price={dish.price}/>)}
+  //  </div>
+  //);
+  
 }
 
 export default App;
+*/
