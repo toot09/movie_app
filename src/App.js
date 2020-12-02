@@ -10,12 +10,14 @@ class App extends React.Component {
 
   componentDidMount() {
     //after 6ms re-call render because of setState
+    console.log("I'm componentDidMount");
     setTimeout(()=>{
       this.setState({isLoading : false});
     }, 6000);
   }
 
   render() {
+    console.log("I'm Render");
     const{isLoading} = this.state;
   return <div>{isLoading?"Loading..." : "we are ready"}</div>
   }
