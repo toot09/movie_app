@@ -2,6 +2,7 @@ import React from 'react';
 import propTypes from "prop-types";
 import axios from "axios";
 import Movies from './Movies';
+import './App.css';
 //import Ujone from './Ujone';
 
 class App extends React.Component {
@@ -39,20 +40,30 @@ class App extends React.Component {
   render() {
     const { isLoading, movies } = this.state;
     return (
-      <div>
-        {isLoading 
-        ? "Loading..."
-        : movies.map(movies => (
-          <Movies 
-            key={movies.id}
-            id={movies.id} 
-            year={movies.year} 
-            title={movies.title} 
-            summary={movies.summary} 
-            poster={movies.medium_cover_image}
-          />
-        ))}
-      </div>
+      <section className="container">
+        {isLoading ?
+          (
+            <div className="loader">
+              <span className="loader_text">Loading...</span>
+            </div>
+          )
+          : 
+          (
+            <div className="movies">
+              {movies.map(movies => (
+                <Movies
+                  key={movies.id}
+                  id={movies.id}
+                  year={movies.year}
+                  title={movies.title}
+                  summary={movies.summary}
+                  poster={movies.medium_cover_image}
+                />
+              ))}
+            </div>
+          )
+        }
+      </section>
     )
   }
 
